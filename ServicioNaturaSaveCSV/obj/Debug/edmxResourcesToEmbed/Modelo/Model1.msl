@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InfoNaturaModelStoreContainer" CdmEntityContainer="InfoNaturaEntities1">
+    <EntitySetMapping Name="AuditoriaNaturaSaveCSV">
+      <EntityTypeMapping TypeName="InfoNaturaModel.AuditoriaNaturaSaveCSV">
+        <MappingFragment StoreEntitySet="AuditoriaNaturaSaveCSV">
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+          <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+          <ScalarProperty Name="Proceso" ColumnName="Proceso" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EstadoAuditoriaSaveCSV">
+      <EntityTypeMapping TypeName="InfoNaturaModel.EstadoAuditoriaSaveCSV">
+        <MappingFragment StoreEntitySet="EstadoAuditoriaSaveCSV">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+          <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

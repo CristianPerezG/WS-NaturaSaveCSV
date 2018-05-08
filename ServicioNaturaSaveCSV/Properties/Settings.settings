@@ -1,0 +1,63 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ServicioNaturaSaveCSV.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="RutaRaizNatura" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\Sitios\xm\FTP_CSV\</Value>
+    </Setting>
+    <Setting Name="TiempoHiloFTP" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">3600000</Value>
+    </Setting>
+    <Setting Name="UsuarioFTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">gera</Value>
+    </Setting>
+    <Setting Name="PasswrodFTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">y8Shy7$3</Value>
+    </Setting>
+    <Setting Name="HostFTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ftp://209.172.62.232/</Value>
+    </Setting>
+    <Setting Name="ExtensionArchivosFTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.csv</Value>
+    </Setting>
+    <Setting Name="RutaLogsNatura" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">D:\Sitios\xm\Logs\FTPCSV\</Value>
+    </Setting>
+    <Setting Name="NombreArchivoHilos" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LogProcesoPrincipal.txt</Value>
+    </Setting>
+    <Setting Name="NombreArchivoError" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LogError.txt</Value>
+    </Setting>
+    <Setting Name="NombreArchivoBulk" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">LogBulksSQL.txt</Value>
+    </Setting>
+    <Setting Name="CadenaSQL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=10.21.1.16\INFONATURA;Initial Catalog=InfoNatura;Persist Security Info=True;User ID=info;Password=InfoNatura</Value>
+    </Setting>
+    <Setting Name="ExpresionStringFTP" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">.*(?&lt;mes&gt;(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec))\s*(?&lt;dia&gt;[0-9]*)\s*(?&lt;año&gt;([0-9]|:)*)\s*(?&lt;nombreDirectorio&gt;.*)</Value>
+    </Setting>
+    <Setting Name="ExtensionArchivosLocal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">.tmp</Value>
+    </Setting>
+    <Setting Name="InicioSPNatura" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SP_ETL_</Value>
+    </Setting>
+    <Setting Name="EstadoDescargando" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Descargando</Value>
+    </Setting>
+    <Setting Name="EstadoCambioandoCod" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Cambiando Codificación</Value>
+    </Setting>
+    <Setting Name="EstadoBulk" Type="System.String" Scope="User">
+      <Value Profile="(Default)">BulkInsert</Value>
+    </Setting>
+    <Setting Name="EstadoFinalizado" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Finalizado</Value>
+    </Setting>
+    <Setting Name="EstadoFallido" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fallido</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

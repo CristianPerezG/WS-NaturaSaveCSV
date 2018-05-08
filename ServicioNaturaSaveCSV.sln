@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServicioNaturaSaveCSV", "ServicioNaturaSaveCSV\ServicioNaturaSaveCSV.csproj", "{11D732AC-AD56-4737-9BAF-FF8DF44BB110}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "InstaladorWSNaturaSave", "InstaladorWSNaturaSave\InstaladorWSNaturaSave.vdproj", "{E2D0507C-CA4A-4E35-AC82-565DCBB65134}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNaturaSaveCSV", "WebNaturaSaveCSV\WebNaturaSaveCSV.csproj", "{97E03D32-FC14-4066-A428-5D67A0BC96F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11D732AC-AD56-4737-9BAF-FF8DF44BB110}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11D732AC-AD56-4737-9BAF-FF8DF44BB110}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11D732AC-AD56-4737-9BAF-FF8DF44BB110}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11D732AC-AD56-4737-9BAF-FF8DF44BB110}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2D0507C-CA4A-4E35-AC82-565DCBB65134}.Debug|Any CPU.ActiveCfg = Debug
+		{E2D0507C-CA4A-4E35-AC82-565DCBB65134}.Release|Any CPU.ActiveCfg = Release
+		{97E03D32-FC14-4066-A428-5D67A0BC96F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E03D32-FC14-4066-A428-5D67A0BC96F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E03D32-FC14-4066-A428-5D67A0BC96F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E03D32-FC14-4066-A428-5D67A0BC96F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D40907D-9750-4F20-8F14-1A8689082B4A}
+	EndGlobalSection
+EndGlobal

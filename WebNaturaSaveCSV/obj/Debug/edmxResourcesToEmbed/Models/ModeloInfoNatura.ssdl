@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InfoNaturaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="SP_ETL_ReporteAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreArchivo" Type="varchar" Mode="In" />
+    <Parameter Name="rutaArchivo" Type="varchar" Mode="In" />
+    <Parameter Name="fechaInicial" Type="datetime" Mode="In" />
+    <Parameter Name="fechaModificacion" Type="datetime" Mode="In" />
+    <Parameter Name="descripcionProceso" Type="varchar" Mode="In" />
+    <Parameter Name="estadoProceso" Type="int" Mode="In" />
+    <Parameter Name="estadoDescarga" Type="bit" Mode="In" />
+    <Parameter Name="estadoCodificacion" Type="bit" Mode="In" />
+    <Parameter Name="estadoBulk" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="InfoNaturaModelStoreContainer" />
+</Schema>

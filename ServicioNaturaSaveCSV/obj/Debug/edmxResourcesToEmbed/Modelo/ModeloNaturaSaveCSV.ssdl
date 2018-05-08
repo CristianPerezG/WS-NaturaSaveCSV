@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InfoNaturaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AuditoriaNaturaSaveCSV">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+    </Key>
+    <Property Name="IdProceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaProceso" Type="datetime" Nullable="false" />
+    <Property Name="UltimaFechaProceso" Type="datetime" />
+    <Property Name="NombreArchivo" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="RutaArchivo" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="DescripcionProceso" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+    <Property Name="EstadoDescarga" Type="bit" Nullable="false" />
+    <Property Name="EstadoCodificacion" Type="bit" Nullable="false" />
+    <Property Name="EstadoBulk" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoAuditoriaSaveCSV">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreEstado" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Estado_Auditoria">
+    <End Role="EstadoAuditoriaSaveCSV" Type="Self.EstadoAuditoriaSaveCSV" Multiplicity="1" />
+    <End Role="AuditoriaNaturaSaveCSV" Type="Self.AuditoriaNaturaSaveCSV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoAuditoriaSaveCSV">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="AuditoriaNaturaSaveCSV">
+        <PropertyRef Name="Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_ETL_ActualizarRegistroAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="idProceso" Type="int" Mode="In" />
+    <Parameter Name="nombreArchivo" Type="varchar" Mode="In" />
+    <Parameter Name="rutaArchivo" Type="varchar" Mode="In" />
+    <Parameter Name="descripcionProceso" Type="varchar" Mode="In" />
+    <Parameter Name="estadoProceso" Type="int" Mode="In" />
+    <Parameter Name="estadoDescarga" Type="bit" Mode="In" />
+    <Parameter Name="estadoCodificacion" Type="bit" Mode="In" />
+    <Parameter Name="estadoBulk" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_ETL_CrearRegistroAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nombreArchivo" Type="varchar" Mode="In" />
+    <Parameter Name="rutaArchivo" Type="varchar" Mode="In" />
+    <Parameter Name="descripcionProceso" Type="varchar" Mode="In" />
+    <Parameter Name="estadoProceso" Type="int" Mode="In" />
+    <Parameter Name="estadoDescarga" Type="bit" Mode="In" />
+    <Parameter Name="estadoCodificacion" Type="bit" Mode="In" />
+    <Parameter Name="estadoBulk" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="SP_ETL_Obtener_Directorios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <EntityContainer Name="InfoNaturaModelStoreContainer">
+    <EntitySet Name="AuditoriaNaturaSaveCSV" EntityType="Self.AuditoriaNaturaSaveCSV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoAuditoriaSaveCSV" EntityType="Self.EstadoAuditoriaSaveCSV" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Estado_Auditoria" Association="Self.FK_Estado_Auditoria">
+      <End Role="EstadoAuditoriaSaveCSV" EntitySet="EstadoAuditoriaSaveCSV" />
+      <End Role="AuditoriaNaturaSaveCSV" EntitySet="AuditoriaNaturaSaveCSV" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

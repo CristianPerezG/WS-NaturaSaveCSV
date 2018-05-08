@@ -1,0 +1,26 @@
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\ServicioNaturaSaveCSV.exe.config
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\ServicioNaturaSaveCSV.exe
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\ServicioNaturaSaveCSV.pdb
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.dll
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.SqlServer.dll
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.xml
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.SqlServer.xml
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.ProjectInstaller.resources
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.csproj.GenerateResource.Cache
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.csproj.CoreCompileInputs.cache
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.exe
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.pdb
+C:\Dropbox\AppBSS\Syncfusion\NATURA\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.csprojResolveAssemblyReference.cache
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\ServicioNaturaSaveCSV.exe.config
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\ServicioNaturaSaveCSV.exe
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\ServicioNaturaSaveCSV.pdb
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.dll
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.xml
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.ProjectInstaller.resources
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.csproj.GenerateResource.cache
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.csproj.CoreCompileInputs.cache
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.csproj.CopyComplete
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.exe
+C:\Users\CPerez\Documents\Natura\Software Natura\WS-NaturaSave\ServicioNaturaSaveCSV\ServicioNaturaSaveCSV\obj\Release\ServicioNaturaSaveCSV.pdb

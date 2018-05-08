@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InfoNaturaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InfoNaturaEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_ETL_ReporteAuditoria" ReturnType="Collection(InfoNaturaModel.SP_ETL_ReporteAuditoria_Result)">
+      <Parameter Name="nombreArchivo" Mode="In" Type="String" />
+      <Parameter Name="rutaArchivo" Mode="In" Type="String" />
+      <Parameter Name="fechaInicial" Mode="In" Type="DateTime" />
+      <Parameter Name="fechaModificacion" Mode="In" Type="DateTime" />
+      <Parameter Name="descripcionProceso" Mode="In" Type="String" />
+      <Parameter Name="estadoProceso" Mode="In" Type="Int32" />
+      <Parameter Name="estadoDescarga" Mode="In" Type="Boolean" />
+      <Parameter Name="estadoCodificacion" Mode="In" Type="Boolean" />
+      <Parameter Name="estadoBulk" Mode="In" Type="Boolean" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_ETL_ReporteAuditoria_Result">
+    <Property Type="String" Name="Archivo_Procesado" Nullable="false" MaxLength="1000" />
+    <Property Type="String" Name="Ruta_Archivo" Nullable="false" MaxLength="2000" />
+    <Property Type="DateTime" Name="Fecha_Inicial" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="Ultima_Modificacion" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="2000" />
+    <Property Type="String" Name="Estado_Final" Nullable="false" MaxLength="100" />
+    <Property Type="Boolean" Name="Estado_Descarga_FTP" Nullable="false" />
+    <Property Type="Boolean" Name="Estado_Codificacion" Nullable="false" />
+    <Property Type="Boolean" Name="Estado_BulkSQL" Nullable="false" />
+  </ComplexType>
+</Schema>

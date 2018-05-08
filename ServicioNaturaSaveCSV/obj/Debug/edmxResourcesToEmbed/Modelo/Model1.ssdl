@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InfoNaturaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AuditoriaNaturaSaveCSV">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+    </Key>
+    <Property Name="IdProceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FechaProceso" Type="datetime" Nullable="false" />
+    <Property Name="Proceso" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+    <Property Name="Estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EstadoAuditoriaSaveCSV">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreEstado" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'InfoNatura.dbo.geraPedidosW' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="geraPedidosW">
+          <Property Name="CodPedido" Type="float" />
+          <Property Name="Persona" Type="float" />
+          <Property Name="NombreDePersona" Type="nvarchar" MaxLength="255" />
+          <Property Name="CantidadDeItems" Type="float" />
+          <Property Name="ValorTotal" Type="nvarchar" MaxLength="255" />
+          <Property Name="ValorTabla" Type="nvarchar" MaxLength="255" />
+          <Property Name="ValorPracticado" Type="nvarchar" MaxLength="255" />
+          <Property Name="ValorLiquido" Type="nvarchar" MaxLength="255" />
+          <Property Name="ValorProductosRegulares" Type="nvarchar" MaxLength="255" />
+          <Property Name="SituacionComercial" Type="nvarchar" MaxLength="255" />
+          <Property Name="DetalleSituacionComercial" Type="nvarchar" MaxLength="255" />
+          <Property Name="SituacionIntegracionExterna" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechadeCaptacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="PrevisionEntrega" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechaEntrega" Type="nvarchar" MaxLength="255" />
+          <Property Name="FechaAprobacion" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodModeloComercial" Type="float" />
+          <Property Name="ModeloComercial" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodEstructuraPadre" Type="float" />
+          <Property Name="EstructuraPadre" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodEstructura" Type="float" />
+          <Property Name="Estructura" Type="nvarchar" MaxLength="255" />
+          <Property Name="CodCD" Type="float" />
+        </EntityType>-->
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'InfoNatura.dbo.geraRevendedorasW' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <Association Name="FK_Estado_Auditoria">
+    <End Role="EstadoAuditoriaSaveCSV" Type="Self.EstadoAuditoriaSaveCSV" Multiplicity="1" />
+    <End Role="AuditoriaNaturaSaveCSV" Type="Self.AuditoriaNaturaSaveCSV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoAuditoriaSaveCSV">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="AuditoriaNaturaSaveCSV">
+        <PropertyRef Name="Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InfoNaturaModelStoreContainer">
+    <EntitySet Name="AuditoriaNaturaSaveCSV" EntityType="Self.AuditoriaNaturaSaveCSV" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EstadoAuditoriaSaveCSV" EntityType="Self.EstadoAuditoriaSaveCSV" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Estado_Auditoria" Association="Self.FK_Estado_Auditoria">
+      <End Role="EstadoAuditoriaSaveCSV" EntitySet="EstadoAuditoriaSaveCSV" />
+      <End Role="AuditoriaNaturaSaveCSV" EntitySet="AuditoriaNaturaSaveCSV" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InfoNaturaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <Function Name="SP_ETL_ReporteAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombreArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="rutaArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="fechaInicial" Type="datetime" Mode="In" />
+          <Parameter Name="fechaModificacion" Type="datetime" Mode="In" />
+          <Parameter Name="descripcionProceso" Type="varchar" Mode="In" />
+          <Parameter Name="estadoProceso" Type="int" Mode="In" />
+          <Parameter Name="estadoDescarga" Type="bit" Mode="In" />
+          <Parameter Name="estadoCodificacion" Type="bit" Mode="In" />
+          <Parameter Name="estadoBulk" Type="bit" Mode="In" />
+        </Function>
+        <EntityContainer Name="InfoNaturaModelStoreContainer" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InfoNaturaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InfoNaturaEntities" annotation:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP_ETL_ReporteAuditoria" ReturnType="Collection(InfoNaturaModel.SP_ETL_ReporteAuditoria_Result)">
+            <Parameter Name="nombreArchivo" Mode="In" Type="String" />
+            <Parameter Name="rutaArchivo" Mode="In" Type="String" />
+            <Parameter Name="fechaInicial" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaModificacion" Mode="In" Type="DateTime" />
+            <Parameter Name="descripcionProceso" Mode="In" Type="String" />
+            <Parameter Name="estadoProceso" Mode="In" Type="Int32" />
+            <Parameter Name="estadoDescarga" Mode="In" Type="Boolean" />
+            <Parameter Name="estadoCodificacion" Mode="In" Type="Boolean" />
+            <Parameter Name="estadoBulk" Mode="In" Type="Boolean" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_ETL_ReporteAuditoria_Result">
+          <Property Type="String" Name="Archivo_Procesado" Nullable="false" MaxLength="1000" />
+          <Property Type="String" Name="Ruta_Archivo" Nullable="false" MaxLength="2000" />
+          <Property Type="DateTime" Name="Fecha_Inicial" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="Ultima_Modificacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="2000" />
+          <Property Type="String" Name="Estado_Final" Nullable="false" MaxLength="100" />
+          <Property Type="Boolean" Name="Estado_Descarga_FTP" Nullable="false" />
+          <Property Type="Boolean" Name="Estado_Codificacion" Nullable="false" />
+          <Property Type="Boolean" Name="Estado_BulkSQL" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InfoNaturaModelStoreContainer" CdmEntityContainer="InfoNaturaEntities" >
+          <FunctionImportMapping FunctionImportName="SP_ETL_ReporteAuditoria" FunctionName="InfoNaturaModel.Store.SP_ETL_ReporteAuditoria">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_ReporteAuditoria_Result">
+                <ScalarProperty Name="Archivo_Procesado" ColumnName="Archivo Procesado" />
+                <ScalarProperty Name="Ruta_Archivo" ColumnName="Ruta Archivo" />
+                <ScalarProperty Name="Fecha_Inicial" ColumnName="Fecha Inicial" />
+                <ScalarProperty Name="Ultima_Modificacion" ColumnName="Ultima Modificacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Estado_Final" ColumnName="Estado Final" />
+                <ScalarProperty Name="Estado_Descarga_FTP" ColumnName="Estado Descarga FTP" />
+                <ScalarProperty Name="Estado_Codificacion" ColumnName="Estado Codificacion" />
+                <ScalarProperty Name="Estado_BulkSQL" ColumnName="Estado BulkSQL" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

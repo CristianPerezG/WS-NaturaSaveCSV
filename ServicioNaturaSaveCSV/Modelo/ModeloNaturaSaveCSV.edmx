@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InfoNaturaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AuditoriaNaturaSaveCSV">
+          <Key>
+            <PropertyRef Name="IdProceso" />
+          </Key>
+          <Property Name="IdProceso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaProceso" Type="datetime" Nullable="false" />
+          <Property Name="UltimaFechaProceso" Type="datetime" />
+          <Property Name="NombreArchivo" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="RutaArchivo" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="DescripcionProceso" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Estado" Type="int" Nullable="false" />
+          <Property Name="EstadoDescarga" Type="bit" Nullable="false" />
+          <Property Name="EstadoCodificacion" Type="bit" Nullable="false" />
+          <Property Name="EstadoBulk" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoAuditoriaSaveCSV">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEstado" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Estado_Auditoria">
+          <End Role="EstadoAuditoriaSaveCSV" Type="Self.EstadoAuditoriaSaveCSV" Multiplicity="1" />
+          <End Role="AuditoriaNaturaSaveCSV" Type="Self.AuditoriaNaturaSaveCSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoAuditoriaSaveCSV">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="AuditoriaNaturaSaveCSV">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_ETL_ActualizarRegistroAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idProceso" Type="int" Mode="In" />
+          <Parameter Name="nombreArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="rutaArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="descripcionProceso" Type="varchar" Mode="In" />
+          <Parameter Name="estadoProceso" Type="int" Mode="In" />
+          <Parameter Name="estadoDescarga" Type="bit" Mode="In" />
+          <Parameter Name="estadoCodificacion" Type="bit" Mode="In" />
+          <Parameter Name="estadoBulk" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_ETL_CrearRegistroAuditoria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombreArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="rutaArchivo" Type="varchar" Mode="In" />
+          <Parameter Name="descripcionProceso" Type="varchar" Mode="In" />
+          <Parameter Name="estadoProceso" Type="int" Mode="In" />
+          <Parameter Name="estadoDescarga" Type="bit" Mode="In" />
+          <Parameter Name="estadoCodificacion" Type="bit" Mode="In" />
+          <Parameter Name="estadoBulk" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="SP_ETL_Obtener_Directorios" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="InfoNaturaModelStoreContainer">
+          <EntitySet Name="AuditoriaNaturaSaveCSV" EntityType="Self.AuditoriaNaturaSaveCSV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoAuditoriaSaveCSV" EntityType="Self.EstadoAuditoriaSaveCSV" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Estado_Auditoria" Association="Self.FK_Estado_Auditoria">
+            <End Role="EstadoAuditoriaSaveCSV" EntitySet="EstadoAuditoriaSaveCSV" />
+            <End Role="AuditoriaNaturaSaveCSV" EntitySet="AuditoriaNaturaSaveCSV" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InfoNaturaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EstadoAuditoriaSaveCSV">
+          <Key>
+            <PropertyRef Name="IdEstado" />
+          </Key>
+          <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescripcionEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="AuditoriaNaturaSaveCSV" Relationship="InfoNaturaModel.FK_Estado_Auditoria" FromRole="EstadoAuditoriaSaveCSV" ToRole="AuditoriaNaturaSaveCSV" />
+        </EntityType>
+        <EntityContainer Name="InfoNaturaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EstadoAuditoriaSaveCSV" EntityType="Self.EstadoAuditoriaSaveCSV" />
+          <FunctionImport Name="SP_ETL_ActualizarRegistroAuditoria" ReturnType="Collection(InfoNaturaModel.SP_ETL_ActualizarRegistroAuditoria_Result)">
+            <Parameter Name="idProceso" Mode="In" Type="Int32" />
+            <Parameter Name="nombreArchivo" Mode="In" Type="String" />
+            <Parameter Name="rutaArchivo" Mode="In" Type="String" />
+            <Parameter Name="descripcionProceso" Mode="In" Type="String" />
+            <Parameter Name="estadoProceso" Mode="In" Type="Int32" />
+            <Parameter Name="estadoDescarga" Mode="In" Type="Boolean" />
+            <Parameter Name="estadoCodificacion" Mode="In" Type="Boolean" />
+            <Parameter Name="estadoBulk" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="SP_ETL_CrearRegistroAuditoria" ReturnType="Collection(InfoNaturaModel.SP_ETL_CrearRegistroAuditoria_Result)">
+            <Parameter Name="nombreArchivo" Mode="In" Type="String" />
+            <Parameter Name="rutaArchivo" Mode="In" Type="String" />
+            <Parameter Name="descripcionProceso" Mode="In" Type="String" />
+            <Parameter Name="estadoProceso" Mode="In" Type="Int32" />
+            <Parameter Name="estadoDescarga" Mode="In" Type="Boolean" />
+            <Parameter Name="estadoCodificacion" Mode="In" Type="Boolean" />
+            <Parameter Name="estadoBulk" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="AuditoriaNaturaSaveCSV" EntityType="InfoNaturaModel.AuditoriaNaturaSaveCSV" />
+          <AssociationSet Name="FK_Estado_Auditoria" Association="InfoNaturaModel.FK_Estado_Auditoria">
+            <End Role="EstadoAuditoriaSaveCSV" EntitySet="EstadoAuditoriaSaveCSV" />
+            <End Role="AuditoriaNaturaSaveCSV" EntitySet="AuditoriaNaturaSaveCSV" />
+          </AssociationSet>
+          <FunctionImport Name="SP_ETL_Obtener_Directorios" ReturnType="Collection(InfoNaturaModel.SP_ETL_Obtener_Directorios_Result)" />
+        </EntityContainer>
+        <ComplexType Name="SP_ETL_ActualizarRegistroAuditoria_Result">
+          <Property Type="String" Name="MensajeProceso" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="SP_ETL_CrearRegistroAuditoria_Result">
+          <Property Type="String" Name="MensajeProceso" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <EntityType Name="AuditoriaNaturaSaveCSV">
+          <Key>
+            <PropertyRef Name="IdProceso" />
+          </Key>
+          <Property Name="IdProceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UltimaFechaProceso" Type="DateTime" Precision="3" />
+          <Property Name="NombreArchivo" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="RutaArchivo" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DescripcionProceso" Type="String" Nullable="false" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Int32" Nullable="false" />
+          <Property Name="EstadoCodificacion" Type="Boolean" Nullable="false" />
+          <Property Name="EstadoBulk" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="EstadoAuditoriaSaveCSV" Relationship="InfoNaturaModel.FK_Estado_Auditoria" FromRole="AuditoriaNaturaSaveCSV" ToRole="EstadoAuditoriaSaveCSV" />
+          <Property Name="EstadoDescarga" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Estado_Auditoria">
+          <End Type="InfoNaturaModel.EstadoAuditoriaSaveCSV" Role="EstadoAuditoriaSaveCSV" Multiplicity="1" />
+          <End Type="InfoNaturaModel.AuditoriaNaturaSaveCSV" Role="AuditoriaNaturaSaveCSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoAuditoriaSaveCSV">
+              <PropertyRef Name="IdEstado" />
+            </Principal>
+            <Dependent Role="AuditoriaNaturaSaveCSV">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="SP_ETL_Obtener_Directorios_Result">
+          <Property Type="Decimal" Name="NumID" Nullable="false" Precision="8" Scale="0" />
+          <Property Type="String" Name="Carpeta" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Procedimiento" Nullable="true" MaxLength="250" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InfoNaturaModelStoreContainer" CdmEntityContainer="InfoNaturaEntities">
+          <EntitySetMapping Name="EstadoAuditoriaSaveCSV">
+            <EntityTypeMapping TypeName="InfoNaturaModel.EstadoAuditoriaSaveCSV">
+              <MappingFragment StoreEntitySet="EstadoAuditoriaSaveCSV">
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+                <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+                <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ETL_ActualizarRegistroAuditoria" FunctionName="InfoNaturaModel.Store.SP_ETL_ActualizarRegistroAuditoria" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_ActualizarRegistroAuditoria_Result">
+                <ScalarProperty Name="MensajeProceso" ColumnName="MensajeProceso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_ETL_CrearRegistroAuditoria" FunctionName="InfoNaturaModel.Store.SP_ETL_CrearRegistroAuditoria" >
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_CrearRegistroAuditoria_Result">
+                <ScalarProperty Name="MensajeProceso" ColumnName="MensajeProceso" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AuditoriaNaturaSaveCSV">
+            <EntityTypeMapping TypeName="InfoNaturaModel.AuditoriaNaturaSaveCSV">
+              <MappingFragment StoreEntitySet="AuditoriaNaturaSaveCSV">
+                <ScalarProperty Name="EstadoDescarga" ColumnName="EstadoDescarga" />
+                <ScalarProperty Name="EstadoBulk" ColumnName="EstadoBulk" />
+                <ScalarProperty Name="EstadoCodificacion" ColumnName="EstadoCodificacion" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="DescripcionProceso" ColumnName="DescripcionProceso" />
+                <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+                <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+                <ScalarProperty Name="UltimaFechaProceso" ColumnName="UltimaFechaProceso" />
+                <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+                <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_ETL_Obtener_Directorios" FunctionName="InfoNaturaModel.Store.SP_ETL_Obtener_Directorios">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_Obtener_Directorios_Result">
+                <ScalarProperty Name="NumID" ColumnName="NumID" />
+                <ScalarProperty Name="Carpeta" ColumnName="Carpeta" />
+                <ScalarProperty Name="Procedimiento" ColumnName="Procedimiento" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

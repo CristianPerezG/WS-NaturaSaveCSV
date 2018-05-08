@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InfoNaturaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AuditoriaNaturaSaveCSV">
+    <Key>
+      <PropertyRef Name="IdProceso" />
+    </Key>
+    <Property Name="IdProceso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FechaProceso" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Proceso" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EstadoAuditoriaSaveCSV" Relationship="Self.FK_Estado_Auditoria" FromRole="AuditoriaNaturaSaveCSV" ToRole="EstadoAuditoriaSaveCSV" />
+  </EntityType>
+  <EntityType Name="EstadoAuditoriaSaveCSV">
+    <Key>
+      <PropertyRef Name="IdEstado" />
+    </Key>
+    <Property Name="IdEstado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreEstado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DescripcionEstado" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AuditoriaNaturaSaveCSV" Relationship="Self.FK_Estado_Auditoria" FromRole="EstadoAuditoriaSaveCSV" ToRole="AuditoriaNaturaSaveCSV" />
+  </EntityType>
+  <Association Name="FK_Estado_Auditoria">
+    <End Role="EstadoAuditoriaSaveCSV" Type="Self.EstadoAuditoriaSaveCSV" Multiplicity="1" />
+    <End Role="AuditoriaNaturaSaveCSV" Type="Self.AuditoriaNaturaSaveCSV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EstadoAuditoriaSaveCSV">
+        <PropertyRef Name="IdEstado" />
+      </Principal>
+      <Dependent Role="AuditoriaNaturaSaveCSV">
+        <PropertyRef Name="Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InfoNaturaEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AuditoriaNaturaSaveCSV" EntityType="Self.AuditoriaNaturaSaveCSV" />
+    <EntitySet Name="EstadoAuditoriaSaveCSV" EntityType="Self.EstadoAuditoriaSaveCSV" />
+    <AssociationSet Name="FK_Estado_Auditoria" Association="Self.FK_Estado_Auditoria">
+      <End Role="EstadoAuditoriaSaveCSV" EntitySet="EstadoAuditoriaSaveCSV" />
+      <End Role="AuditoriaNaturaSaveCSV" EntitySet="AuditoriaNaturaSaveCSV" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

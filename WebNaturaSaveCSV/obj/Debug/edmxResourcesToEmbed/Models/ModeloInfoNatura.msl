@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InfoNaturaModelStoreContainer" CdmEntityContainer="InfoNaturaEntities">
+    <FunctionImportMapping FunctionImportName="SP_ETL_ReporteAuditoria" FunctionName="InfoNaturaModel.Store.SP_ETL_ReporteAuditoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_ReporteAuditoria_Result">
+          <ScalarProperty Name="Archivo_Procesado" ColumnName="Archivo Procesado" />
+          <ScalarProperty Name="Ruta_Archivo" ColumnName="Ruta Archivo" />
+          <ScalarProperty Name="Fecha_Inicial" ColumnName="Fecha Inicial" />
+          <ScalarProperty Name="Ultima_Modificacion" ColumnName="Ultima Modificacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado_Final" ColumnName="Estado Final" />
+          <ScalarProperty Name="Estado_Descarga_FTP" ColumnName="Estado Descarga FTP" />
+          <ScalarProperty Name="Estado_Codificacion" ColumnName="Estado Codificacion" />
+          <ScalarProperty Name="Estado_BulkSQL" ColumnName="Estado BulkSQL" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

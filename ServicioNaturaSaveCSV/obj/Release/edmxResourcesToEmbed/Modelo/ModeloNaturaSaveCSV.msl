@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InfoNaturaModelStoreContainer" CdmEntityContainer="InfoNaturaEntities">
+    <EntitySetMapping Name="EstadoAuditoriaSaveCSV">
+      <EntityTypeMapping TypeName="InfoNaturaModel.EstadoAuditoriaSaveCSV">
+        <MappingFragment StoreEntitySet="EstadoAuditoriaSaveCSV">
+          <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+          <ScalarProperty Name="NombreEstado" ColumnName="NombreEstado" />
+          <ScalarProperty Name="DescripcionEstado" ColumnName="DescripcionEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_ETL_ActualizarRegistroAuditoria" FunctionName="InfoNaturaModel.Store.SP_ETL_ActualizarRegistroAuditoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_ActualizarRegistroAuditoria_Result">
+          <ScalarProperty Name="MensajeProceso" ColumnName="MensajeProceso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_ETL_CrearRegistroAuditoria" FunctionName="InfoNaturaModel.Store.SP_ETL_CrearRegistroAuditoria">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_CrearRegistroAuditoria_Result">
+          <ScalarProperty Name="MensajeProceso" ColumnName="MensajeProceso" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AuditoriaNaturaSaveCSV">
+      <EntityTypeMapping TypeName="InfoNaturaModel.AuditoriaNaturaSaveCSV">
+        <MappingFragment StoreEntitySet="AuditoriaNaturaSaveCSV">
+          <ScalarProperty Name="EstadoDescarga" ColumnName="EstadoDescarga" />
+          <ScalarProperty Name="EstadoBulk" ColumnName="EstadoBulk" />
+          <ScalarProperty Name="EstadoCodificacion" ColumnName="EstadoCodificacion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="DescripcionProceso" ColumnName="DescripcionProceso" />
+          <ScalarProperty Name="RutaArchivo" ColumnName="RutaArchivo" />
+          <ScalarProperty Name="NombreArchivo" ColumnName="NombreArchivo" />
+          <ScalarProperty Name="UltimaFechaProceso" ColumnName="UltimaFechaProceso" />
+          <ScalarProperty Name="FechaProceso" ColumnName="FechaProceso" />
+          <ScalarProperty Name="IdProceso" ColumnName="IdProceso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_ETL_Obtener_Directorios" FunctionName="InfoNaturaModel.Store.SP_ETL_Obtener_Directorios">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InfoNaturaModel.SP_ETL_Obtener_Directorios_Result">
+          <ScalarProperty Name="NumID" ColumnName="NumID" />
+          <ScalarProperty Name="Carpeta" ColumnName="Carpeta" />
+          <ScalarProperty Name="Procedimiento" ColumnName="Procedimiento" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

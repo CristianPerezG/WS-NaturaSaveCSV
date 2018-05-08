@@ -1,0 +1,99 @@
+﻿@model IEnumerable<WebNaturaSaveCSV.Models.SP_ETL_ReporteAuditoria_Result>
+
+@{
+    ViewBag.Title = "Home ´Principal";
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        generarDataTables();
+    });
+</script>
+
+<style>
+    .bg:before {
+        /* The image used */
+        background-image: url('../../Content/Img/Logo Natura.svg');
+        position: absolute;
+        content: ' ';
+        background-size: 100% 100%;
+        opacity: 0.10;
+        width: 100%;
+        height: 100%;
+        left: 1%;
+    }
+
+    .swal-wide {
+        width: auto;
+        left: 40%;
+    }
+</style>
+
+<div class="bg">
+
+</div>
+
+<div>
+
+    <div class="jumbotron">
+        <h1>Consulta de Procesos FTP</h1>
+        <p class="lead">Consulta de procesos FTP y BULK-INSERT de NATURA</p>
+    </div>
+
+    @{ var grillaWEB = new WebGrid(Model, canPage: false, canSort: false);}
+    <div class="container footer">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                @grillaWEB.Table(
+                         tableStyle: "table table-hover",
+                         htmlAttributes: new { Id = "tablaProcesos" },
+                         headerStyle: "thead-dark",
+                         columns: grillaWEB.Columns(
+                             grillaWEB.Column("Archivo_Procesado", "Archivo Procesado"),
+                             grillaWEB.Column("Ruta_Archivo", "Ruta Archivo"),
+                             grillaWEB.Column("Fecha_Inicial", "Fecha Inicial"),
+                             grillaWEB.Column("Ultima_Modificacion", "Fecha Ultima"),
+                             grillaWEB.Column("Descripcion", "Descripcion"),
+                             grillaWEB.Column("Estado_Final", "Estado Final Proceso"),
+                             grillaWEB.Column("Estado_Descarga_FTP", "Estado FTP"),
+                             grillaWEB.Column("Estado_Codificacion", "Estado Codificacion"),
+                             grillaWEB.Column("Estado_BulkSQL", "Estado BulkSQL")
+                         ), footer: @<table class="footer">
+                            <tr>
+                                <th>Archivo Procesado</th>
+                                <th>Ruta Archivo</th>
+                                <th>Fecha Inicial</th>
+                                <th>Fecha Ultima</th>
+                                <th>Descripcion</th>
+                                <th>Estado Final Proceso</th>
+                                <th>Estado FTP</th>
+                                <th>Estado Codificacion</th>
+                                <th>Estado BulkSQL</th>
+                            </tr>
+                        </table>)
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Log Procesos FTP</h2>
+            <p>Este log comtiene todos los procesos BASE del Servicio Windows.</p>
+            <button type="button" class="btn btn-info" onclick="mostrarTXT('PRINCIPAL')">Ver Log &raquo;</button>
+        </div>
+        <div class="col-md-4">
+            <h2>Log BULK-INSERT</h2>
+            <p>Este log comtiene todos los procesos BASE del Servicio Windows.</p>
+            <button type="button" class="btn btn-info" onclick="mostrarTXT('BULK')">Ver Log &raquo;</button>
+        </div>
+        <div class="col-md-4">
+            <h2>Log Errores</h2>
+            <p>Este log mostrara TODOS LOS ERRORES generados en el procesamiento general del Servicio Windows.</p>
+            <button type="button" class="btn btn-info" onclick="mostrarTXT('ERROR')">Ver Log &raquo;</button>
+        </div>
+    </div>
+
+</div>
